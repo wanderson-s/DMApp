@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">DMApp</string>
+    <string name="app_name">Easy Budget</string>
+    <string name="mensagem_inicial">Seja bem-vindo à Taimin!</string>
+    <string name="mensagem_erro">login ou senha inválidos</string>
 </resources>
