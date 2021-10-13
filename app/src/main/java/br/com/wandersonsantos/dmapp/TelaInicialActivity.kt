@@ -6,15 +6,21 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.GravityCompat
+import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_tela_inicial.*
 import kotlinx.android.synthetic.main.login.*
+import kotlinx.android.synthetic.main.toolbar.*
 
-class TelaInicialActivity : DebugActivity() {
+class TelaInicialActivity : NavigationDrawerActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tela_inicial)
 
+
+        setSupportActionBar(toolbar)
         supportActionBar?.title = "Taimin"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -38,7 +44,7 @@ class TelaInicialActivity : DebugActivity() {
             intent.putExtras(params)
             startActivity(intent)
         }
-
+        configuraMenuLateral()
     }
 
 
@@ -74,6 +80,8 @@ class TelaInicialActivity : DebugActivity() {
 
         return super.onOptionsItemSelected(item)
     }
+
+
 
 
 }

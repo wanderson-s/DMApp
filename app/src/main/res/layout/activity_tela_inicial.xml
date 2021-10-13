@@ -1,24 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/layoutMenuLateral"
+    android:fitsSystemWindows="true">
 
-    <Button
-        android:id="@+id/botao_receitas"
+    <LinearLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Receitas" />
+        android:layout_height="match_parent">
+        <include layout="@layout/toolbar" />
 
-    <Button
-        android:id="@+id/botao_despesas"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Despesas" />
+        <Button
+            android:id="@+id/botao_receitas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Receitas" />
 
-    <Button
-        android:id="@+id/botao_total"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Total" />
-</LinearLayout>
+        <Button
+            android:id="@+id/botao_despesas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Despesas" />
+
+        <Button
+            android:id="@+id/botao_total"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total" />
+    </LinearLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_menu_lateral"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/menu_lateral_cabecalho"
+        app:menu="@menu/menu_lateral">
+
+    </com.google.android.material.navigation.NavigationView>
+
+</androidx.drawerlayout.widget.DrawerLayout>

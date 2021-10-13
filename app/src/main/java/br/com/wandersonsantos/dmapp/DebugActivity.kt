@@ -6,7 +6,7 @@ import android.util.Log
 
 open class DebugActivity : AppCompatActivity() {
 
-    private val className: String
+    protected val className: String
         get(){
             val s = javaClass.name
             return s.substring(s.lastIndexOf("."))

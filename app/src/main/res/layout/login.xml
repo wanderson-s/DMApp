@@ -9,14 +9,18 @@
         android:id="@+id/imagem_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/imagem_login" />
+        app:srcCompat="@drawable/imagem_login"
+        />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/mensagem_inicial"
-        android:textSize="25sp"/>
+        android:textSize="25sp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        />
 
 
     <EditText
@@ -25,7 +29,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Digite seu usuário" />
+        android:hint="Digite seu usuário"
+        />
 
 
     <EditText
@@ -34,13 +39,26 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="Digite sua senha"/>
-
-    <Button
-        android:id="@+id/botao_login"
+        android:hint="Digite sua senha"
+        />
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="login" />
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/botao_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="login"
+            android:stateListAnimator="@null"
+            />
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:id="@+id/progressLogin"
+            />
+
+    </FrameLayout>
 
 
 </LinearLayout>

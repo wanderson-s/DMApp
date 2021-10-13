@@ -2,4 +2,6 @@
     <string name="app_name">Easy Budget</string>
     <string name="mensagem_inicial">Seja bem-vindo à Taimin!</string>
     <string name="mensagem_erro">login ou senha inválidos</string>
+    <string name="abrir">Abrir</string>
+    <string name="fechar">Fechar</string>
 </resources>

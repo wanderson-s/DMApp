@@ -3,6 +3,9 @@ package br.com.wandersonsantos.dmapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.login.*
 
@@ -17,6 +20,8 @@ class MainActivity : DebugActivity() {
 
         botao_login.setOnClickListener {
 
+            progressLogin.visibility = View.VISIBLE
+
             val nome_usuario = campo_usuario.text.toString()
             val senha_usuario = campo_senha.text.toString()
 
@@ -25,12 +30,15 @@ class MainActivity : DebugActivity() {
             intent.putExtra("nome_usuario", nome_usuario)
             intent.putExtra("senha_usuario", senha_usuario)
 
-            if (nome_usuario == "aluno" && senha_usuario == "impacta"){
-                startActivity(intent)
-            } else{
-                Toast.makeText(this, "login ou senha inválidos", Toast.LENGTH_SHORT).show()
-            }
+            Handler(Looper.getMainLooper()).postDelayed({
+                progressLogin.visibility = View.INVISIBLE
+                if (nome_usuario == "aluno" && senha_usuario == "impacta") {
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(this, "login ou senha inválido", Toast.LENGTH_SHORT).show()
+                }
 
-            }
+            }, 1000)
         }
+    }
 }
