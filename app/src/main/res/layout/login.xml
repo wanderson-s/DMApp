@@ -41,6 +41,13 @@
         android:inputType="textPassword"
         android:hint="Digite sua senha"
         />
+
+    <CheckBox
+        android:id="@+id/checkLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lembrar login" />
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

@@ -1,5 +1,6 @@
 package br.com.wandersonsantos.dmapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -25,7 +26,8 @@ class BudgetActivity : NavigationDrawerActivity() {
 
     fun onClickBudget(budget: Budget){
         Toast.makeText(this, "Cliclou no Budget ${budget.nome}", Toast.LENGTH_SHORT).show()
-    }
+
+        }
 
     override fun onResume() {
         super.onResume()
@@ -35,7 +37,11 @@ class BudgetActivity : NavigationDrawerActivity() {
     var budgets = listOf<Budget>()
 
     fun taskBudgets(){
-        this.budgets = BudgetService.getBudget(this)
-        recyclerBudget?.adapter = BudgetAdapter(budgets) {onClickBudget(it)}
+        Thread {
+            this.budgets = BudgetService.getBudget(this)
+            runOnUiThread {
+                recyclerBudget?.adapter = BudgetAdapter(budgets) { onClickBudget(it) }
+            }
+        }.start()
     }
 }

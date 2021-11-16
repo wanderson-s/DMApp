@@ -1,20 +1,52 @@
 package br.com.wandersonsantos.dmapp
 
 import android.content.Context
+import android.util.Log
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
+import java.lang.Exception
+import java.net.URL
 
 object BudgetService {
-    fun getBudget(context: Context): List<Budget>{
-        val budgets = mutableListOf<Budget>()
+    var host = "https://api-budget-v1.azurewebsites.net"
 
-        for (i in 1..4){
-            var b = Budget()
-            b.nome = "Budget $i"
-            b.funcionario = "Funcionario $i"
-            b.foto = "https://lh3.googleusercontent.com/proxy/27lhYOKsspedhU8joCmfZiCBU60kCu0O14xr_72zrX_VvVKJuQM4rdklImnxkgi142j1aSLeq8VWQ2OnlHuEJqrIhNlcSyPinztsJ793GevewUYe30utXy5bE9GBQSc"
-            budgets.add(b)
+    fun getBudget(context: Context): List<Budget>{
+
+        try {
+            var budgets = mutableListOf<Budget>()
+            val url = "$host/budgets"
+            val json = HttpHelper.get(url)
+
+            Log.d("SERVICETAG", json)
+
+            budgets = parserJson<MutableList<Budget>>(json)
+
+            saveDB(budgets)
+            return budgets
+        } catch (e: Exception) {
+            var budgets = DatabaseManager.getBudgetDAO().findAll()
+
+            return budgets
         }
 
-        return budgets
+    }
+    private fun saveDB(budgets: List<Budget>){
+        for (b in budgets){
+            val ex = DatabaseManager.getBudgetDAO().getById(b.id!!)
+            if (ex == null){
+                DatabaseManager.getBudgetDAO().insert(b)
+            }
+        }
+    }
 
+    fun saveBudget (budget: Budget) {
+        val url = "$host/budgets"
+        var json = HttpHelper.post(url, GsonBuilder().create().toJson(budget))
+    }
+
+    inline fun <reified T> parserJson(json: String): T {
+        val type = object : TypeToken<T>() {}.type
+        return Gson().fromJson<T>(json, type)
     }
 }

@@ -24,6 +24,10 @@ class TelaInicialActivity : NavigationDrawerActivity() {
         supportActionBar?.title = "Taimin"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        val nome_usuario_prefs = Prefs.getString("nome_usuario")
+        Toast.makeText(this, "Nome usuário Prefs: $nome_usuario_prefs", Toast.LENGTH_SHORT).show()
+
+
         var intent = Intent(this, SegundaTela::class.java)
 
         var params = Bundle()
