@@ -49,6 +49,12 @@ open class NavigationDrawerActivity : DebugActivity(), NavigationView.OnNavigati
                 startActivity(intent)
                 }
             }
+            R.id.nav_localizacao -> {
+                if (className != "LocalizacaoActivity"){
+                    val intent = Intent(this, MapasActivity::class.java)
+                    startActivity(intent)
+                }
+            }
             R.id.nav_sair -> {
                 finishAffinity()
             }

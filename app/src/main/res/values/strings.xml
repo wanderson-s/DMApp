@@ -4,4 +4,7 @@
     <string name="mensagem_erro">login ou senha inválidos</string>
     <string name="abrir">Abrir</string>
     <string name="fechar">Fechar</string>
+    <string name="API_KEY">AIzaSyCqPmwK9tf77oS2QvDbO3SpimckWEmpbgs</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -27,7 +27,7 @@ class BudgetActivity : NavigationDrawerActivity() {
     fun onClickBudget(budget: Budget){
         Toast.makeText(this, "Cliclou no Budget ${budget.nome}", Toast.LENGTH_SHORT).show()
 
-        }
+    }
 
     override fun onResume() {
         super.onResume()
@@ -41,7 +41,13 @@ class BudgetActivity : NavigationDrawerActivity() {
             this.budgets = BudgetService.getBudget(this)
             runOnUiThread {
                 recyclerBudget?.adapter = BudgetAdapter(budgets) { onClickBudget(it) }
+                sendNotification(this.budgets.get(1))
             }
         }.start()
+    }
+
+    fun sendNotification(budget: Budget) {
+        val intent = Intent(this, SegundaTela::class.java)
+        NotificationUtil.create(1, intent, "DMApp", "Você tem uma nova atividade de ${budget.nome}")
     }
 }

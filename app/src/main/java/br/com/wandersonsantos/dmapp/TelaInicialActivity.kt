@@ -57,7 +57,7 @@ class TelaInicialActivity : NavigationDrawerActivity() {
         (menu?.findItem(R.id.action_buscar)?.actionView as SearchView?)?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
             override fun onQueryTextChange(newText: String): Boolean {
-                    return false
+                return false
             }
 
             override fun onQueryTextSubmit(query: String): Boolean {
